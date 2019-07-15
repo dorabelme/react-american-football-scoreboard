@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import MyTimer from "./Timer.js";
 
 
 function UpperBoard(props) {
@@ -12,8 +13,7 @@ function UpperBoard(props) {
 
                 <div className="home__score">{props.lions}</div>
             </div>
-            {/* <MyStopwatch /> */}
-            <div className="timer">00:03</div>
+            <MyTimer />
             <div className="away">
                 <h2 className="away__name">Tigers</h2>
                 <div className="away__score">{props.tigers}</div>
