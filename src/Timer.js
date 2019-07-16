@@ -3,26 +3,26 @@ import { useState } from "react";
 
 
 function MyTimer(props) {
-    console.log("here"); 
     const [timer, setTimer] = useState(900);
-    // let msTens = (timer / 10) % 10;
-    // let msHundreds = Math.floor(timer / 100) % 10;
-    // let secondOnes = Math.floor(timer / 1000) % 10;
-    // let secondTens = Math.floor(timer / 10000) % 10;
-    let seconds = (timer % 60).toString().padStart(2, "0");
-    let minutes = Math.floor(timer / 60).toString().padStart(2, "0");
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            console.log("time")
-            setTimer(timer => timer - 1);
-            if (timer <= 0) {
-                setTimer(900);
-            }
-        }, 1000);
-
-}, []);
+    // const msTens = (timer / 10) % 10;
+    // const msHundreds = Math.floor(timer / 100) % 10;
+    // const secondOnes = Math.floor(timer / 1000) % 10;
+    // const secondTens = Math.floor(timer / 10000) % 10;
+    const seconds = (timer % 60).toString().padStart(2, "0");
+    const minutes = Math.floor(timer / 60).toString().padStart(2, "0");
+    const [quarter, setQuarter] = useState(1);
     
+    useEffect(() => {
+        setInterval(() => {
+            setTimer(timer => timer - 1);
+        }, 1000);
+        
+}, []);
+    if (timer <= 0) {
+        setTimer(900);
+        setQuarter(quarter + 1);
+    }
+
 return (
     <div className="timer">{minutes}:{seconds}</div>
     );
